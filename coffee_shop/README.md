@@ -6,17 +6,6 @@ This project is a Python object-oriented programming exercise that models a simp
 
 The system allows customers to place orders for different coffee types, each order storing its customer, coffee, and price. From these objects, you can retrieve useful information such as all orders for a coffee, all coffees a customer has tried, and a customer’s average spending.
 
-#Project Structure
-coffee_shop/
-│
-├── customer.py     
-├── coffee.py        
-├── order.py         
-└── tests/
-    ├── test_customer.py
-    ├── test_coffee.py
-    └── test_order.py
-
 #Features#
 
 Create customers with validated names
