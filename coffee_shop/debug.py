@@ -1,21 +1,16 @@
 from coffee_shop.customer import Customer
 from coffee_shop.coffee import Coffee
 
-# Create some customers
-alice = Customer("Alice")
-bob = Customer("Bob")
+c1 = Customer("Alice")
+c2 = Customer("Bob")
 
-# Create some coffees
+espresso = Coffee("Espresso")
 latte = Coffee("Latte")
-mocha = Coffee("Mocha")
 
-# Customers create orders
-order1 = alice.create_order(latte, 5.5)
-order2 = alice.create_order(mocha, 6.0)
-order3 = bob.create_order(latte, 4.0)
+c1.create_order(espresso, 5.0)
+c1.create_order(latte, 6.5)
+c2.create_order(espresso, 4.5)
 
-# Print results
-print("Coffees ordered by Alice:", [c.name for c in alice.coffees()])
-print("Customers who ordered Latte:", [c.name for c in latte.customers()])
-most_aficionado = Customer.most_aficionado(latte)
-print("Top customer for Latte:", most_aficionado.name if most_aficionado else "None")
+print("Alice coffees:", [c.name for c in c1.coffees()])
+print("Espresso customers:", [c.name for c in espresso.customers()])
+print("Espresso avg price:", espresso.average_price())

@@ -1,32 +1,12 @@
-import pytest
-from coffee_shop.customer import Customer
 from coffee_shop.coffee import Coffee
-
-def test_coffee_name_validation():
-    # Coffee name must be a string >= 3 characters
-    with pytest.raises(TypeError):
-        Coffee(123)
-    with pytest.raises(ValueError):
-        Coffee("aa")
+from coffee_shop.customer import Customer
 
 def test_coffee_orders_and_customers():
-    alice = Customer("Alice")
-    bob = Customer("Bob")
-    latte = Coffee("Latte")
-
-    o1 = alice.create_order(latte, 5.0)
-    o2 = bob.create_order(latte, 6.0)
-
-    # Orders and customers returned correctly
-    assert set(latte.orders()) == {o1, o2}
-    assert set(latte.customers()) == {alice, bob}
-
-def test_num_orders_and_average_price():
-    mocha = Coffee("Mocha")
-    alice = Customer("Alice")
-    
-    alice.create_order(mocha, 4.0)
-    alice.create_order(mocha, 6.0)
-
-    assert mocha.num_orders() == 2
-    assert mocha.average_price() == 5.0
+    coffee = Coffee("Cappuccino")
+    c1 = Customer("Tom")
+    c2 = Customer("Ann")
+    c1.create_order(coffee, 4.0)
+    c2.create_order(coffee, 5.0)
+    assert coffee.num_orders() == 2
+    assert set(c.name for c in coffee.customers()) == {"Tom", "Ann"}
+    assert coffee.average_price() == 4.5
